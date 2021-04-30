@@ -3,6 +3,10 @@
 
 ![App preview](/Preview.png)
 
+## Installation
+```
+npm install react-native-simple-card-swiper
+```
 
 ## Props
 | Props        | Type              |
