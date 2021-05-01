@@ -2,7 +2,7 @@
   "name": "react-native-simple-card-swiper",
   "description": "Awesome tinder like card swiper for react-native. Highly Customizable!",
   "author": "Phuoc Tam",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": {
     "type": "git",

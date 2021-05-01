@@ -48,6 +48,9 @@ function Swiper({
           break;
       }
     },
+    onMoveShouldSetPanResponder: (evt, gestureState) => {
+      return !(gestureState.dx === 0 && gestureState.dy === 0)                  
+    }
   });
 
   const onPanMoving = gestureState => {
@@ -177,22 +180,19 @@ function Swiper({
       return null;
     }
 
-    if (i === index) {
-      return (
-        <Animated.View
-          style={[styles.card, cardSwipeStyle()]}
-          key={i}
-          {...panResponder.panHandlers}>
-          {renderLabels()}
-          {renderCard(item)}
-        </Animated.View>
-      );
-    }
+    const isCurrentIndex = i === index;
 
     return (
       <Animated.View
+        style={[
+          styles.card,
+          isCurrentIndex && cardSwipeStyle(),
+          !isCurrentIndex && cardSwipeChildScaleStyle(),
+          !isCurrentIndex && {zIndex: -i}
+        ]}
         key={i}
-        style={[styles.card, cardSwipeChildScaleStyle(), {zIndex: -i}]}>
+        {...panResponder.panHandlers}>
+        {isCurrentIndex && renderLabels()}
         {renderCard(item)}
       </Animated.View>
     );
